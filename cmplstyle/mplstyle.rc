@@ -1,0 +1,90 @@
+# See https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-matplotlibrc-files
+# for more details on the paths which are checked for the configuration file.
+
+
+# FIGURE -------------------------
+# figure.autolayout: True # tight layout not recommended
+figure.constrained_layout.use: True
+figure.constrained_layout.h_pad:  0.07 # inches
+figure.constrained_layout.w_pad:  0.07
+figure.dpi: 600
+
+
+# AXES ---------------------------
+axes.linewidth: 0.4
+axes.labelsize: 10.5
+axes.titlesize: 10.5
+
+# LINES --------------------------
+lines.linewidth: 1.1
+lines.color: "black"
+lines.marker: None
+lines.markerfacecolor: auto
+lines.markeredgecolor: auto
+lines.markeredgewidth: 1.0
+lines.markersize: 4.5
+
+
+# FONT ---------------------------
+font.size: 9.5
+# font.family: "Nimbus Roman"
+# font.family: "STIXGeneral"
+# font.family: "CMU Serif"
+
+
+# LaTeX --------------------------
+text.usetex: True
+font.family: "Times"
+# mathtext.fontset: "STIX"
+# mathtext.fontset: "cm"
+
+
+# TICKS --------------------------
+xtick.labelsize: 9.1
+ytick.labelsize: 9.1
+xtick.top: True
+ytick.right: True
+
+xtick.direction: "in"
+xtick.major.width: 0.25
+xtick.major.size: 4.0
+xtick.minor.visible: False
+xtick.minor.width: 0.25
+xtick.minor.size: 3.0
+xtick.color: "grey"
+xtick.labelcolor: "black"
+
+ytick.direction: "in"
+ytick.major.width: 0.25
+ytick.major.size: 4.0
+ytick.minor.visible: False
+ytick.minor.width: 0.25
+ytick.minor.size: 3.0
+ytick.color: "grey"
+ytick.labelcolor: "black"
+
+
+# LEGEND -------------------------
+legend.loc: "best"
+legend.frameon: False
+legend.fontsize: 9.5
+legend.labelspacing: 0.2
+legend.borderaxespad: 0.3
+legend.handlelength: 1.5
+legend.handletextpad: 0.5
+
+# Only show the text label in legend
+# legend.labelcolor: "linecolor"
+# legend.handlelength: 0
+# legend.handletextpad: 0
+
+# SCATTER PLOTS ------------------
+# Configuration for the scatter plots of galaxy samples
+scatter.marker: "."
+scatter.edgecolors: face
+
+# HATCHES ------------------------
+hatch.linewidth: 0.4
+
+# ERRORBAR PLOTS -----------------
+errorbar.capsize: 0.0
