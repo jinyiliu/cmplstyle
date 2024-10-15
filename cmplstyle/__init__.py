@@ -5,8 +5,8 @@ from .colors import register_colors
 
 
 def use_style() -> None:
-    from _color_data import CH_BASE_COLORS, CH_TRAD_COLORS
-    register_colors(CH_BASE_COLORS, CH_TRAD_COLORS)
+    from ._color_data import CH_BASE_COLORS, CH_TRAD_COLORS, WHITE_COLORS_CH
+    register_colors(CH_BASE_COLORS, CH_TRAD_COLORS, WHITE_COLORS_CH)
 
     pkgpath = os.path.dirname(__file__)
     plt.style.use(os.path.join(pkgpath, 'mplstyle.rc'))
