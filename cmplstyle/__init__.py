@@ -1,12 +1,5 @@
-import os
-import matplotlib.pyplot as plt
-from .utils import onecol_wth, median_wth, fullpg_wth, cm2inch
-from .colors import register_colors
+from cmplstyle._color_data import TCC
+from cmplstyle.colors import register_colors
+from cmplstyle.utils import *
 
-
-def use_style() -> None:
-    from ._color_data import CH_BASE_COLORS, CH_TRAD_COLORS, WHITE_COLORS_CH
-    register_colors(CH_BASE_COLORS, CH_TRAD_COLORS, WHITE_COLORS_CH)
-
-    pkgpath = os.path.dirname(__file__)
-    plt.style.use(os.path.join(pkgpath, 'mplstyle.rc'))
+register_colors(TCC)
