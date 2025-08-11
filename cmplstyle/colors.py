@@ -1,79 +1,94 @@
 import os
-import math
-import matplotlib.pyplot as plt
-import matplotlib.colors as mpc
 from matplotlib.typing import ColorType
-from matplotlib.patches import Rectangle
-from matplotlib.font_manager import FontProperties
-from ._color_data import BASE_COLORS_EN_TO_CH, TRAD_COLORS_EN_TO_CH
-from .utils import cm2inch
 
-COLORS_EN_TO_CH = BASE_COLORS_EN_TO_CH.update(TRAD_COLORS_EN_TO_CH)
-
-def register_colors(*color_dicts: dict[str, ColorType]) -> None:
+def register_colors(*color_dicts: dict[str, ColorType]):
+    """Register custom colors to matplotlib's color map."""
+    from matplotlib import colors
     for color_dict in color_dicts:
-        mpc._colors_full_map.update(color_dict)
+        colors._colors_full_map.update(color_dict)
 
 
-def get_chinese_name(*en_color_names: str) -> tuple[str, ...]:
-    ret = []
-    for en_color_name in en_color_names:
-        if en_color_name in COLORS_EN_TO_CH.keys():
-            ret.append(COLORS_EN_TO_CH[en_color_name])
-        else:
-            raise ValueError(f"Unknown color name: {en_color_name}")
-    return tuple(ret)
+def plot_colortable(
+        colors_dict: dict[str, ColorType],
+        ncols: int=5,
+        savepath: str | None=None,
+):
+    """Plot a color table for the given colors."""
+    import matplotlib.pyplot as plt
+    from matplotlib.font_manager import FontProperties
+    from matplotlib.patches import FancyBboxPatch, BoxStyle
+    from cmplstyle.utils import cm2inch
 
+    plt.rcParams["text.usetex"] = False
 
-def make_colorcard(colors: dict[str, str], textcolor: ColorType='#1a0404', ncols: int=12, sort_colors=True):
-    cell_width = 1.0 # cm
-    cell_height = 3.0
-    gap = 0.2
+    names = list(colors_dict.keys())
+
+    cell_width = 2.6 # cm
+    cell_height = 1.0
+    swatch_width = 0.6
+    swatch_height = 0.6
+    gap_swatch_text = 0.15
+    x_offset = 0.1
+    y_offset = 0.1
     margin = 0.5
 
-    if sort_colors is True:
-        names = sorted(
-            colors, key=lambda c: tuple(mpc.rgb_to_hsv(mpc.to_rgb(c))))
-    else:
-        names = list(colors)
+    n = len(colors_dict)
+    nrows = n // ncols + (n % ncols > 0)
 
-    n = len(names)
-    nrows = math.ceil(n / ncols)
-
-    width = cell_width * ncols + 2 * margin - gap
-    height = cell_height * nrows + 2 * margin - gap
+    width = cell_width * ncols + 2 * margin
+    height = cell_height * nrows + 2 * margin
 
     fig, ax = plt.subplots(figsize=cm2inch(width, height))
-    fig.subplots_adjust(left=margin/width, right=(width-margin+gap)/width,
-                        bottom=margin/height, top=(height-margin+gap)/height)
+    fig.subplots_adjust(
+        left=margin / width,
+        bottom=margin / height,
+        right=1 - margin / width,
+        top=1 - margin / height,
+    )
     ax.set_xlim(0, cell_width * ncols)
     ax.set_ylim(0, cell_height * nrows)
-    ax.yaxis.set_visible(False)
     ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
     ax.set_axis_off()
+    ax.invert_yaxis()
 
     for i, name in enumerate(names):
         row = i // ncols
         col = i % ncols
 
-        x = cell_width * col
-        y = cell_height * (nrows - row - 1)
+        swatch_start_x = cell_width * col + x_offset
+        swatch_start_y = cell_height * row + y_offset
+        text_pos_x = cell_width * col + swatch_width + gap_swatch_text + x_offset
+        text_pos_y = swatch_start_y + y_offset + 0.24
 
-        x_text = x + (cell_width - gap) / 2
-        y_text = cell_height * (nrows - row) - gap - 0.25
+        ax.text(
+            x=text_pos_x,
+            y=text_pos_y,
+            s=name,
+            fontsize=11,
+            horizontalalignment="left",
+            verticalalignment="center",
+            fontproperties=FontProperties(
+                fname=os.path.join(
+                    os.path.dirname(__file__),
+                    "fonts/SourceHanSerifSC-Medium.otf")
+                ),
+            )
 
         ax.add_patch(
-            Rectangle(xy=(x, y), width=cell_width-gap,
-                      height=cell_height-gap, facecolor=colors[name])
+            FancyBboxPatch(
+                xy=(swatch_start_x, swatch_start_y),
+                width=swatch_width,
+                height=swatch_height,
+                facecolor=colors_dict[name],
+                edgecolor="0.7",
+                boxstyle=BoxStyle(
+                    stylename="Round",
+                    pad=0.0,
+                    rounding_size=0.1,
+                )
+            )
         )
 
-        ax.text(x_text, y_text, '\n'.join(name), fontsize=10,
-                color=textcolor,
-                horizontalalignment='center',
-                verticalalignment='top',
-                fontproperties=FontProperties(
-                    fname=os.path.join(os.path.dirname(__file__),
-                                       "fonts/SourceHanSerifSC-SemiBold.otf"))
-        )
-
-    return fig
+        if savepath:
+            fig.savefig(savepath, bbox_inches="tight")
