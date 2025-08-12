@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cmplstyle"
-version = "0.6.1"
+version = "0.6.2"
 authors = [
     { name = "Jinyi Liu", email = "liujy0129@gmail.com" },
 ]
@@ -29,7 +29,7 @@ classifiers = [
 dependencies = [
     "matplotlib>=3.7.0",
 ]
-license = "MIT"
+license = { text = "MIT"}
 license-files = ["LICENSE"]
 
 [project.urls]
