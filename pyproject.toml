@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cmplstyle"
-dynamic = ["version"]
+version = "0.6.1"
 authors = [
     { name = "Jinyi Liu", email = "liujy0129@gmail.com" },
 ]
