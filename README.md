@@ -12,12 +12,13 @@ pip install cmplstyle
 
 - A collection of 365 traditional Chinese colors.
 - Optmised matplotlib style for scientific plotting.
+- Small handy functions for helping scientific plotting.
 
 ## Traditional Chinese Colors (TCC)
 
 Our color collection is sourced from the reference [《中国传统色：国民版色卡》](https://www.douban.com/doubanapp/dispatch/book/35951952?dt_dapp=1) by 郭浩, featuring hues widely used in traditional Chinese art and design. See [here](https://jinyiliu.github.io/2025/08/13/cmplstyle/TCC_ncols_5.pdf) a complete color reference.
 
-The color names are in Chinese. Once the package is imported, the colors can be accessed by their names. For example,
+The color names are in Chinese and their HEX color values are stored in the `cmplstyle.TCC` dictionary. Once the package is imported, the colors can be accessed easily by their names. For example,
 ```python
 import cmplstyle
 import seaborn
@@ -25,8 +26,8 @@ seaborn.palplot(["群青", "西子", "胭脂", "桂黄", "苍苍", "青骊", "�
 ```
 will plot a color palette with the specified colors in the list:
 
-![Example TCC Palette](./cmplstyle/assets/example_tcc_palette.png)
+![Example TCC Palette](https://raw.githubusercontent.com/jinyiliu/cmplstyle/main/cmplstyle/assets/example_tcc_palette.png)
 
 
 ## LICENSE
-This package is licensed under the [MIT License](./LICENSE).
+This package is licensed under the [MIT License](https://github.com/jinyiliu/cmplstyle/blob/main/LICENSE).
