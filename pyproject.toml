@@ -3,7 +3,7 @@ requires = ["hatchling >= 1.27.0"]
 build-backend = "hatchling.build"
 
 [tool.hatch.version]
-source = "git-tag"
+source = "git"
 
 [project]
 name = "cmplstyle"
