@@ -1,90 +1,312 @@
 # See https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-matplotlibrc-files
 # for more details on the paths which are checked for the configuration file.
 
+# Matplotlib configuration are currently divided into following parts:
+#     [-] BACKENDS
+#     [x] LINES
+#     [x] PATCHES
+#     [x] HATCHES
+#     [-] BOXPLOT
+#     [x] FONT
+#     [x] TEXT
+#     [x] LaTeX
+#     [x] AXES
+#     [x] AXIS
+#     [-] DATES
+#     [x] TICKS
+#     [x] GRIDS
+#     [x] LEGEND
+#     [x] FIGURE
+#     [x] IMAGES
+#     [o] CONTOUR PLOTS
+#     [x] ERRORBAR PLOTS
+#     [x] HISTOGRAM PLOTS
+#     [x] SCATTER PLOTS
+#     [-] AGG RENDERING
+#     [-] PATHS
+#     [x] SAVING FIGURES
+#     [-] INTERACTIVE KEYMAPS
+#     [-] ANIMATION
 
-# FIGURE -------------------------
-# figure.autolayout: True # tight layout not recommended
-figure.constrained_layout.use: True
-figure.constrained_layout.h_pad:  0.07 # inches
-figure.constrained_layout.w_pad:  0.07
-figure.dpi: 600
+# [x] means that the section is completed
+# [o] means that the section is partially completed
+# [-] means that the section is not changed from the default matplotlib settings
 
 
-# AXES ---------------------------
-axes.linewidth: 0.4
-axes.labelsize: 10.5
-axes.titlesize: 10.5
 
 # LINES --------------------------
-lines.linewidth: 1.1
-lines.color: "black"
+lines.linewidth: 1.5
+lines.linestyle: solid
+lines.color: C0
 lines.marker: None
 lines.markerfacecolor: auto
 lines.markeredgecolor: auto
 lines.markeredgewidth: 1.0
 lines.markersize: 4.5
+lines.dash_joinstyle: round
+lines.dash_capstyle: butt
+lines.solid_joinstyle: round
+lines.solid_capstyle: butt
+lines.antialiased: True
 
+lines.dashed_pattern: 2.5, 1.5
+lines.dashdot_pattern: 3.5, 1.0, 0.5, 1.0
+lines.dotted_pattern: 0.3, 0.4
+lines.scale_dashes: True
+
+markers.fillstyle: full
+
+pcolor.shading: auto
+pcolormesh.snap: True
+
+
+# PATCHES ------------------------
+patch.linewidth: 1.0
+patch.facecolor: C0
+patch.edgecolor: "black"
+patch.force_edgecolor: False
+patch.antialiased: True
+
+
+# HATCHES ------------------------
+hatch.color: "black"
+hatch.linewidth: 0.5
 
 # FONT ---------------------------
-font.size: 9.5
-# font.family: "Nimbus Roman"
-# font.family: "STIXGeneral"
-# font.family: "CMU Serif"
+font.family: "serif"
+font.style: normal
+font.variant: normal
+font.weight: normal
+font.stretch: normal
+font.size: 8.5
+
+font.serif: Times, Times New Roman, Nimbus Roman No9 L, DejaVu Serif, Bitstream Vera Serif, Computer Modern Roman, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Palatino, Charter, serif
+font.sans-serif: DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+font.cursive: Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, Comic Neue, Comic Sans MS, cursive
+font.fantasy: Chicago, Charcoal, Impact, Western, xkcd script, fantasy
+font.monospace: Courier, Courier New, DejaVu Sans Mono, Bitstream Vera Sans Mono, Computer Modern Typewriter, Andale Mono, Nimbus Mono L, Fixed, Terminal, monospace
+
+
+# TEXT ---------------------------
+text.color: "black"
+text.hinting: force_autohint
+text.hinting_factor: 8
+text.kerning_factor: 0
+text.antialiased: True
+text.parse_math: True
 
 
 # LaTeX --------------------------
-text.usetex: True
-font.family: "Times"
-# mathtext.fontset: "STIX"
-# mathtext.fontset: "cm"
+text.usetex: False
+mathtext.fontset: "stix"
+mathtext.default: it
+
+
+# AXES ---------------------------
+axes.facecolor: "white"
+axes.edgecolor: "black"
+axes.linewidth: 0.8
+
+axes.grid: False
+axes.grid.which: major
+
+axes.titlelocation: center
+axes.titlesize: 10.0
+axes.titleweight: normal
+axes.titlecolor: auto
+axes.titley: None
+axes.titlepad: 5.0
+
+axes.labelsize: 10.0
+axes.labelpad: 4.0
+axes.labelweight: normal
+axes.labelcolor: black
+
+axes.axisbelow: line
+
+axes.spines.left: True
+axes.spines.right: True
+axes.spines.top: True
+axes.spines.bottom: True
+
+axes.formatter.limits: -5, 6
+axes.formatter.use_locale: False
+axes.formatter.use_mathtext: False
+axes.formatter.min_exponent: 0
+axes.formatter.useoffset: True
+axes.formatter.offset_threshold: 4
+
+axes.unicode_minus: True
+
+axes.xmargin: 0.05
+axes.ymargin: 0.05
+axes.zmargin: 0.05
+axes.autolimit_mode: data
+
+polaraxes.grid: True
+
+axes3d.grid: True
+axes3d.automargin: False
+axes3d.xaxis.panecolor: (0.95, 0.95, 0.95, 0.5)
+axes3d.yaxis.panecolor: (0.90, 0.90, 0.90, 0.5)
+axes3d.zaxis.panecolor: (0.925, 0.925, 0.925, 0.5)
+axes3d.mouserotationstyle: trackball
+axes3d.trackballsize: 0.667
+axes3d.trackballborder: 0.2
+
+axes.prop_cycle: cycler("color", ["绛红", "松石", "葡萄水", "二青", "银鼠", "官绿", "中明", "三公子", "十样锦", "茶色"])
+
+
+# AXIS ---------------------------
+xaxis.labellocation: center
+yaxis.labellocation: center
 
 
 # TICKS --------------------------
-xtick.labelsize: 9.1
-ytick.labelsize: 9.1
 xtick.top: True
-ytick.right: True
-
-xtick.direction: "in"
-xtick.major.width: 0.25
-xtick.major.size: 4.0
-xtick.minor.visible: False
-xtick.minor.width: 0.25
-xtick.minor.size: 3.0
-xtick.color: "grey"
+xtick.bottom: True
+xtick.labeltop: False
+xtick.labelbottom: True
+xtick.major.size: 3.5
+xtick.minor.size: 2.0
+xtick.major.width: 0.6
+xtick.minor.width: 0.6
+xtick.major.pad: 3.0
+xtick.minor.pad: 3.4
+xtick.color: "black"
 xtick.labelcolor: "black"
+xtick.labelsize: 9.1
+xtick.direction: "in"
+xtick.minor.visible: False
+xtick.major.top: True
+xtick.major.bottom: True
+xtick.minor.top: True
+xtick.minor.bottom: True
+xtick.minor.ndivs: auto
+xtick.alignment: center
 
-ytick.direction: "in"
-ytick.major.width: 0.25
-ytick.major.size: 4.0
-ytick.minor.visible: False
-ytick.minor.width: 0.25
-ytick.minor.size: 3.0
-ytick.color: "grey"
+
+ytick.left: True
+ytick.right: True
+ytick.labelleft: True
+ytick.labelright: False
+ytick.major.size: 3.5
+ytick.minor.size: 2.0
+ytick.major.width: 0.6
+ytick.minor.width: 0.6
+ytick.major.pad: 3.5
+ytick.minor.pad: 3.4
+ytick.color: "black"
 ytick.labelcolor: "black"
+ytick.labelsize: 9.1
+ytick.direction: "in"
+ytick.minor.visible: False
+ytick.major.left: True
+ytick.major.right: True
+ytick.minor.left: True
+ytick.minor.right: True
+ytick.minor.ndivs: auto
+ytick.alignment: center_baseline
+
+
+# GRIDS --------------------------
+grid.linestyle: -
+grid.linewidth: 0.6
+grid.color: "荻色"
+grid.alpha: 1.0
 
 
 # LEGEND -------------------------
 legend.loc: "best"
-legend.frameon: False
-legend.fontsize: 9.5
-legend.labelspacing: 0.2
-legend.borderaxespad: 0.3
+legend.frameon: True
+legend.framealpha: 0.8
+legend.facecolor: inherit
+legend.edgecolor: 0.8
+legend.fancybox: False
+
+legend.shadow: False
+legend.numpoints: 1
+legend.scatterpoints: 1
+legend.markerscale: 1.0
+legend.fontsize: 9.0
+legend.labelcolor: "black"
+legend.title_fontsize: None
+
+legend.borderpad: 0.2
+legend.labelspacing: 0.3
 legend.handlelength: 1.5
+legend.handleheight: 0.7
 legend.handletextpad: 0.5
+legend.borderaxespad: 0.6
+legend.columnspacing: 2.0
+
 
 # Only show the text label in legend
 # legend.labelcolor: "linecolor"
 # legend.handlelength: 0
 # legend.handletextpad: 0
 
-# SCATTER PLOTS ------------------
-# Configuration for the scatter plots of galaxy samples
-scatter.marker: "."
-scatter.edgecolors: face
 
-# HATCHES ------------------------
-hatch.linewidth: 0.4
+
+# FIGURE -------------------------
+figure.titlesize: large
+figure.titleweight: normal
+figure.labelsize: medium
+figure.labelweight: normal
+
+figure.figsize: 3.46, 2.60 # inch
+figure.dpi: 600 # dots per inch
+figure.facecolor: "white"
+figure.edgecolor: "white"
+figure.frameon: True
+
+figure.subplot.left: 0.125
+figure.subplot.right: 0.9
+figure.subplot.bottom: 0.11
+figure.subplot.top: 0.88
+figure.subplot.wspace: 0.2
+figure.subplot.hspace: 0.2
+
+figure.autolayout: False # tight layout not recommended
+figure.constrained_layout.use: True
+figure.constrained_layout.h_pad:  0.07 # inches
+figure.constrained_layout.w_pad:  0.07
+figure.constrained_layout.hspace: 0.02
+figure.constrained_layout.wspace: 0.02
+
+
+# IMAGES -------------------------
+image.aspect: equal
+image.interpolation: auto
+image.cmap: "viridis"
+image.origin: upper
+image.resample: True
+image.composite_image: True
+
+
+# CONTOUR PLOTS ------------------
+contour.negative_linestyle: dashed
+contour.corner_mask: True
+contour.linewidth: None
+contour.algorithm: mpl2014
 
 # ERRORBAR PLOTS -----------------
 errorbar.capsize: 0.0
+
+# HISTOGRAM PLOTS ----------------
+hist.bins: auto
+
+# SCATTER PLOTS ------------------
+scatter.marker: .
+scatter.edgecolors: face
+
+
+# SAVING FIGURES -----------------
+savefig.dpi: figure
+savefig.facecolor: auto
+savefig.edgecolor: auto
+savefig.format: png
+savefig.bbox: standard
+savefig.pad_inches: 0.05
+savefig.transparent: False
+savefig.orientation: portrait
