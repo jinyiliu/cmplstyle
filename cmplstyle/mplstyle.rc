@@ -228,7 +228,7 @@ legend.shadow: False
 legend.numpoints: 1
 legend.scatterpoints: 1
 legend.markerscale: 1.0
-legend.fontsize: 9.0
+legend.fontsize: 8.0
 legend.labelcolor: "black"
 legend.title_fontsize: None
 
