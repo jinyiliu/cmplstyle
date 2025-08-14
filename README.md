@@ -40,5 +40,55 @@ import cmplstyle
 cmplstyle.use_builtin_mplstyle()
 ```
 
+### Example: Linear regression plot
+
+![Example Linear Regression Plot](https://raw.githubusercontent.com/jinyiliu/cmplstyle/main/cmplstyle/assets/linear_fitting_example.png)
+
+<details>
+<summary>View Plotting Code</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import cmplstyle
+from cmplstyle import onecol_wth, cm2inch
+
+cmplstyle.use_builtin_mplstyle()
+np.random.seed(20)
+
+F = lambda x: 2.0 * x + 3.0
+X = np.linspace(0, 10, 100)
+N = 15 # sample size
+Y_NOISE_STD_MIN = 5.0
+Y_NOISE_STD_MAX = 15.0
+
+X_sample = np.random.normal(loc=5, scale=2, size=N)
+Y_sample = F(X_sample)
+NOISE_STD = np.random.uniform(Y_NOISE_STD_MIN, Y_NOISE_STD_MAX, size=N)
+Y_sample += np.random.normal(size=N) * NOISE_STD
+
+# Fit a linear model with numpy
+a, b = np.polyfit(X_sample, Y_sample, deg=1)
+F_fit = lambda x: a * x + b
+residuals = Y_sample - F_fit(X_sample)
+RSE = np.sqrt(np.sum(residuals ** 2) / (N - 2)) # Residual Standard Error
+SE = RSE * np.sqrt(1 / N + (X - X.mean())**2 / np.sum((X_sample - X_sample.mean())**2))
+
+
+fig, ax = plt.subplots(figsize=cm2inch(onecol_wth, onecol_wth * 0.7))
+ax.errorbar(x=X_sample, y=Y_sample, yerr=NOISE_STD, color="茶色", fmt=".", elinewidth=0.6, markersize=4, zorder=0)
+ax.fill_between(X, F_fit(X) - SE, F_fit(X) + SE, facecolor="天缥", edgecolor=None, alpha=0.7, zorder=1)
+ax.plot(X, F_fit(X), color="空青", label="Fitted line", zorder=3)
+ax.plot(X, F(X), color="娇红", ls="dotted", label="True line", zorder=4)
+
+ax.set_xlabel("$x$")
+ax.set_ylabel("$y$")
+ax.set_ylim(bottom=-25, top=40)
+ax.set_xlim(left=0, right=10)
+ax.legend(loc="lower right", prop={"family": "DejaVu Serif"})
+```
+
+</details>
+
 ## LICENSE
 This package is licensed under the [MIT License](https://github.com/jinyiliu/cmplstyle/blob/main/LICENSE).
