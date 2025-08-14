@@ -13,8 +13,8 @@ def cm2inch(*args: float | int) -> float | tuple[float, ...]:
         return tuple(x / 2.54 for x in args)
 
 
-def use_builtin_cmplstyle():
-    """Use the builtin cmplstyle style."""
+def use_builtin_mplstyle():
+    """Use the built-in matplotlib style."""
     from matplotlib import style
     _rcfile = os.path.join(os.path.dirname(__file__), "mplstyle.rc")
     style.use(_rcfile)
