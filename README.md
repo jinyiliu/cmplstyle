@@ -90,5 +90,22 @@ ax.legend(loc="lower right", prop={"family": "DejaVu Serif"})
 
 </details>
 
-## LICENSE
+## Citation
+
+If you want to cite this package in your work, please use the following BibTeX entry:
+```bibtex
+@software{cmplstyle2025,
+  author       = {Jinyi Liu},
+  title        = {jinyiliu/cmplstyle: cmplstyle},
+  month        = aug,
+  year         = 2025,
+  publisher    = {Zenodo},
+  version      = {latest},
+  doi          = {10.5281/zenodo.16903969},
+  url          = {https://doi.org/10.5281/zenodo.16903969},
+}
+```
+
+
+## License
 This package is licensed under the [MIT License](https://github.com/jinyiliu/cmplstyle/blob/main/LICENSE).
