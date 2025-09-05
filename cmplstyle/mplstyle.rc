@@ -268,7 +268,7 @@ figure.subplot.wspace: 0.2
 figure.subplot.hspace: 0.2
 
 figure.autolayout: False # tight layout not recommended
-figure.constrained_layout.use: True
+figure.constrained_layout.use: False
 figure.constrained_layout.h_pad:  0.07 # inches
 figure.constrained_layout.w_pad:  0.07
 figure.constrained_layout.hspace: 0.02
